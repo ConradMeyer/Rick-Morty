@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Rick&Morty</title>
+</head>
+<body>
+    <div class="contenedorGeneral">
+        <h1 class="titulo">Rick & Morty Characters</h1>
+        <h3>Find here your favorite character of Rick & Morty</h3>
+        <div class="buscador">
+            <input type="text" class="input" id="input" placeholder="Find here your character">
+            <button type="button" id="btnBuscar">Buscar</button>
+            <button type="reset" id="btnReset">Reset</button>
+        </div>
+        <div class="favoritos" id="favoritos">
+            <h2 class="tituloFavoritos">Favoritos</h2>
+        </div>
+    </div>
+    <div class="resultado">
+
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
