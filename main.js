@@ -28,7 +28,7 @@ function fetchData(search) {
     .then(data => {data.results.map(el => pintar(el))});
 } 
 
-function pintar (el) {
+function pintar(el) {
     let caja = document.createElement("div")
     resultado.appendChild(caja)
 
@@ -43,7 +43,7 @@ function pintar (el) {
     })
 }
 
-function detalle (el) {
+function detalle(el) {
     let caja = document.createElement("div")
     caja.setAttribute("class", "detalle")
     contenedor.appendChild(caja)
@@ -86,6 +86,7 @@ function detalle (el) {
     box.appendChild(guardar)
 
     let objeto = {
+        id: `${el.id}`,
         name: `${el.name}`,
         image: `${el.image}`,
         status: `${el.status}`,
@@ -93,7 +94,9 @@ function detalle (el) {
         gender: `${el.gender}`
     }
 
-    guardar.addEventListener("click", ()=> sendData(objeto))
+    guardar.addEventListener("click", ()=> {
+        sendData(objeto)
+        readData()})
 
     volver.addEventListener("click", function(){
         resultado.classList.remove("desaparece")
@@ -105,9 +108,7 @@ function detalle (el) {
 }
 
 function sendData(obj) {
-    let num = 0;
-    firebase.database().ref('objetos/'+ num).update(obj)
-    num++
+    firebase.database().ref('objetos/'+ obj.id).update(obj)
 }
 
 function readData() {
@@ -119,20 +120,37 @@ function readData() {
        
        objetos.on('value', (response) => {
            const data = response.val();
-           data.map(el => {favorito(el)});
+           Object.values(data).map(el => {favorito(el)});
        });
 }
 
 function favorito(el) {
+    let caja = document.createElement("div")
+    caja.setAttribute("class", "cajaFavoritos")
+
     let h3 = document.createElement("h3")
     let text = document.createTextNode(el.name)
     h3.appendChild(text)
-    favoritos.appendChild(h3)
-    
+
+    let delet = document.createElement("h3")
+    let deletText = document.createTextNode("(borrar)")
+    delet.appendChild(deletText)
+
+    caja.appendChild(h3)
+    caja.appendChild(delet)
+    favoritos.appendChild(caja)
+
+    delet.addEventListener("click", function(){
+        borrarFavorito(el)
+    })
     h3.addEventListener("click", function(){
         detalle(el)
         limpiar()
     })
+}
+
+function borrarFavorito(favorito) {
+    irebase.database().ref('objetos/'+ favorito.id).delete()
 }
 
 function limpiar() {
