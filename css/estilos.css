@@ -172,6 +172,9 @@ img {
 /* --------- MEDIA QUERYS --------- */
 
 @media screen and (max-width: 500px ) {
+    h1 {
+        font-size: 3.8em;
+    }
     .resultado div{
         width: 45%;
         margin: 2%;
