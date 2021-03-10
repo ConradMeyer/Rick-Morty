@@ -167,3 +167,23 @@ img {
 .desaparece {
     display: none;
 }
+
+
+/* --------- MEDIA QUERYS --------- */
+
+@media screen and (max-width: 500px ) {
+    .resultado div{
+        width: 45%;
+        margin: 2%;
+    } 
+    .favoritos {
+        width: 80%;
+    }
+    .contenedorGeneral {   
+        background-image: url("../img/unnamed.jpg");
+        /* background-position: center; */
+        background-size: 600px;
+        background-position-y: 0px;
+        background-position-x: -100px;
+    }
+}
