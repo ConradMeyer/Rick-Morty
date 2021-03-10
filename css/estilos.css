@@ -15,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("img/Rick-and-morty.jpg");
+    background-image: url("../img/Rick-and-morty.jpg");
     background-size: cover;
     background-position-y: 50%;
     background-repeat: no-repeat;
@@ -26,11 +26,13 @@ body {
        font-size: 4em;
        text-align: center;
     } 
-    h3 {
+    .subtitulo {
         text-align: center;
         max-width: 80%;
+        background-color: rgba(245, 245, 245, 0.85);
         margin: 1%;
-        font-size: 1.2em;
+        font-size: 1.3em;
+        font-weight: bold;
     }
     .buscador {
         margin: 3%;

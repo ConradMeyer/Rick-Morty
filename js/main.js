@@ -5,17 +5,6 @@ const input = document.querySelector("#input");
 const buscar = document.querySelector("#btnBuscar");
 const reset = document.querySelector("#btnReset");
 const favoritos = document.querySelector("#favoritos")
-const firebaseConfig = {
-    apiKey: "AIzaSyBVYsgaLcnJ9NihColWMG2zTyMozhCjIxE",
-    authDomain: "base-data-test.firebaseapp.com",
-    databaseURL: "https://base-data-test-default-rtdb.europe-west1.firebasedatabase.app/",
-    projectId: "base-data-test",
-    storageBucket: "base-data-test.appspot.com",
-    messagingSenderId: "456393588318",
-    appId: "1:456393588318:web:0832efd1c1b61af4a6fecf"
-};
-firebase.initializeApp(firebaseConfig);
-
 
 // FUNCIONES
 function fetchData(search) {
@@ -107,23 +96,6 @@ function detalle(el) {
 
 }
 
-function sendData(obj) {
-    firebase.database().ref('objetos/'+ obj.id).update(obj)
-}
-
-function readData() {
-       // Acceder a la base de datos
-       const database = firebase.database();
-    
-       // Pedir datos
-       const objetos = database.ref('objetos');
-       
-       objetos.on('value', (response) => {
-           const data = response.val();
-           Object.values(data).map(el => {favorito(el)});
-       });
-}
-
 function favorito(el) {
     let caja = document.createElement("div")
     caja.setAttribute("class", "cajaFavoritos")
@@ -149,17 +121,18 @@ function favorito(el) {
     })
 }
 
-function borrarFavorito(favorito) {
-    irebase.database().ref('objetos/'+ favorito.id).delete()
-}
-
 function limpiar() {
     resultado.setAttribute("class", "desaparece")
 }
 
 function resete() {
     resultado.querySelectorAll('*').forEach(n => n.remove())
+    // document.querySelector('.detalle').remove()
     input.value = "";
+}
+
+function resetFav() {
+    document.querySelectorAll('#favoritos .cajaFavoritos').forEach(n => n.remove())
 }
 
 // EVENTOS
@@ -172,7 +145,4 @@ buscar.addEventListener("click", function() {
     }
 })
 
-reset.addEventListener("click", resete);
-
-
-readData();
+reset.addEventListener("click", ()=> resete());
