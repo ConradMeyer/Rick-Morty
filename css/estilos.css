@@ -189,4 +189,7 @@ img {
     .detalle div {
         width: 80%;
     }
+    .buscador input, button {
+        padding: 2%;
+    } 
 }
