@@ -186,4 +186,7 @@ img {
         background-position-y: 0px;
         background-position-x: -100px;
     }
+    .detalle div {
+        width: 80%;
+    }
 }
