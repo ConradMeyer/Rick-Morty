@@ -105,7 +105,7 @@ function favorito(el) {
     h3.appendChild(text)
 
     let delet = document.createElement("h3")
-    let deletText = document.createTextNode("(borrar)")
+    let deletText = document.createTextNode(" -X")
     delet.appendChild(deletText)
 
     caja.appendChild(h3)
